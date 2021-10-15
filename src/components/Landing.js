@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from "react";
+//components
+import Coin from "./Coin";
 
 //api
 import getcoins from "../services/api";
-import Loading from './loading'
+//gif
+import Loading from "./loading";
 function Landing() {
-
-    const [coins , setCoins]=useState([])
+  const [coins, setCoins] = useState([]);
+  const [search , setSearch] = useState('')
 
   useEffect(() => {
     const fetchapi = async () => {
       const data = await getcoins();
       console.log(data);
-       setCoins(data)
-
+      setCoins(data);
     };
 
     fetchapi();
   }, []);
 
+  const searchHandler =event => {
+      setSearch(event.target.value)
+  }
+
+  const searchcoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
   return (
-  <>
-   
-    <input type='text' placeholder='Search'/>
-    <div>
-      {   coins.length == 0 ? <Loading/> :
-          coins.map(coin => <p key={coin.id}>{coin.id} <img src={coin.image} style={{width:'15px'}}/> {coin.current_price}</p>) 
-      }
-    </div>
-  </>
-  )
+    <>
+      <input type="text" placeholder="Search"  value={search} onChange={searchHandler}/>
+      <div>
+        {coins.length == 0 ? (
+          <Loading />
+        ) : (
+          searchcoins.map((coin) => (
+            <Coin key={coin.id} name={coin.name} symbol={coin.symbol} image={coin.image} price={coin.current_price} change={coin.price_change_percentage_24h} />
+          ))
+        )}
+      </div>
+    </>
+  );
 }
 
 export default Landing;
