@@ -1,0 +1,47 @@
+.image{
+   width: 30px;
+}
+.container{ 
+    border: 1px solid silver;
+    display: flex;
+    border-top:none ;
+    justify-content: space-around;
+    width: 80%;
+    padding: 15px 40px;
+    align-items: center;
+    flex: 1;
+    margin: 0 auto;
+    border-radius: 5px;
+
+}
+
+.name{
+    text-align: left;
+    width: 140px;
+    font-weight: bold;
+}
+.symbol{
+    text-align: left;
+    width: 100px;
+}
+.price{
+    text-align: left;
+    width: 100px;
+}
+.green{
+    color: green;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+}
+.red{
+    color: red;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+
+}
+.market_change{
+    text-align: left;
+    width: 100px;
+}
