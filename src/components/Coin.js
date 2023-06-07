@@ -6,8 +6,8 @@ function Coin(props) {
             <img src={props.image} ale='img' className={styles.image}/>
             <span className={styles.name}>{props.name}</span>
             <span className={styles.symbol}>{props.symbol.toUpperCase()}</span>
-            <span className={styles.price}>${props.price.toLocaleString()}</span>
-            <span className={props.change > 0 ? styles.green : styles.red}>{props.change.toLocaleString()} </span>
+            <span className={styles.price}>${props.price}</span>
+            <span className={props.change > 0 ? styles.green : styles.red}>{props.change} </span>
             <span className={styles.market_change}>${props.market_change}</span>
         </div>
     )
